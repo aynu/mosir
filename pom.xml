@@ -132,37 +132,37 @@
 				<artifactId>arquillian-transaction-jta</artifactId>
 				<version>1.0.1.Final</version>
 			</dependency>
-			<!-- <dependency> -->
-			<!-- <groupId>org.jboss.arquillian.extension</groupId> -->
-			<!-- <artifactId>arquillian-transaction-jta</artifactId> -->
-			<!-- <version>1.0.1.Final</version> -->
-			<!-- </dependency> -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.wildfly</groupId> -->
-			<!-- <artifactId>wildfly-arquillian-container-managed</artifactId> -->
-			<!-- <version>8.1.0.Final</version> -->
-			<!-- </dependency> -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.wildfly</groupId> -->
-			<!-- <artifactId>wildfly-arquillian-container-remote</artifactId> -->
-			<!-- <version>8.1.0.Final</version> -->
-			<!-- </dependency> -->
-			<!-- <dependency> -->
-			<!-- <groupId>org.apache.derby</groupId> -->
-			<!-- <artifactId>derby</artifactId> -->
-			<!-- <version>10.10.1.1</version> -->
-			<!-- </dependency> -->
-			<!-- Aynu Project -->
 			<dependency>
-				<groupId>com.github.aynu</groupId>
-				<artifactId>mosir-testing</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<groupId>org.jboss.arquillian.extension</groupId>
+				<artifactId>arquillian-transaction-jta</artifactId>
+				<version>1.0.1.Final</version>
 			</dependency>
 			<dependency>
-				<groupId>com.github.aynu</groupId>
-				<artifactId>mosir-framework</artifactId>
-				<version>0.0.1-SNAPSHOT</version>
+				<groupId>org.wildfly</groupId>
+				<artifactId>wildfly-arquillian-container-managed</artifactId>
+				<version>8.1.0.Final</version>
 			</dependency>
+			<dependency>
+				<groupId>org.wildfly</groupId>
+				<artifactId>wildfly-arquillian-container-remote</artifactId>
+				<version>8.1.0.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.derby</groupId>
+				<artifactId>derby</artifactId>
+				<version>10.10.1.1</version>
+			</dependency>
+			<!-- Mosir Project -->
+			<!-- <dependency> -->
+			<!-- <groupId>com.github.aynu</groupId> -->
+			<!-- <artifactId>mosir-testing</artifactId> -->
+			<!-- <version>0.0.1-SNAPSHOT</version> -->
+			<!-- </dependency> -->
+			<!-- <dependency> -->
+			<!-- <groupId>com.github.aynu</groupId> -->
+			<!-- <artifactId>mosir-framework</artifactId> -->
+			<!-- <version>0.0.1-SNAPSHOT</version> -->
+			<!-- </dependency> -->
 		</dependencies>
 	</dependencyManagement>
 	<repositories>
@@ -543,4 +543,7 @@
 	<reporting>
 		<outputDirectory>target/site</outputDirectory>
 	</reporting>
+	<modules>
+		<module>mosir-site</module>
+	</modules>
 </project>
