@@ -4,7 +4,11 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * テスティング共通モジュール
+ * 標準基盤モジュール
+ * <dl>
+ * <dt>使用条件
+ * <dd>標準の共通基盤として使用すること。
+ * </dl>
  * @author nilcy
  */
 package com.github.aynu.mosir.core.standard;
