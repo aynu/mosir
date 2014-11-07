@@ -7,4 +7,4 @@
  * テスティング共通モジュール
  * @author nilcy
  */
-package com.github.aynu.mosir.core.testing;
+package com.github.aynu.mosir.core.standard;
