@@ -11,8 +11,19 @@
 	<name>Mosir Core Enterprise</name>
 	<dependencies>
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>com.github.aynu</groupId>
+			<artifactId>mosir-core-testing</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.aynu</groupId>
+			<artifactId>mosir-core-standard</artifactId>
+		</dependency>
+		<!-- https://github.com/wildfly/boms/blob/jboss-bom-parent-8.1.0.Final/jboss-javaee-7.0-with-all/pom.xml -->
+		<!-- https://github.com/ehcache/ehcache-jcache -->
+		<dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache-jcache</artifactId>
 		</dependency>
 	</dependencies>
 </project>
