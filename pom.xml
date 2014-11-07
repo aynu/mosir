@@ -38,6 +38,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<site.encoding>UTF-8</site.encoding>
+		<mosir.version>${project.version}</mosir.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -163,16 +164,11 @@
 				<version>10.10.1.1</version>
 			</dependency>
 			<!-- Mosir Project -->
-			<!-- <dependency> -->
-			<!-- <groupId>com.github.aynu</groupId> -->
-			<!-- <artifactId>mosir-testing</artifactId> -->
-			<!-- <version>0.0.1-SNAPSHOT</version> -->
-			<!-- </dependency> -->
-			<!-- <dependency> -->
-			<!-- <groupId>com.github.aynu</groupId> -->
-			<!-- <artifactId>mosir-framework</artifactId> -->
-			<!-- <version>0.0.1-SNAPSHOT</version> -->
-			<!-- </dependency> -->
+			<dependency>
+				<groupId>com.github.aynu</groupId>
+				<artifactId>mosir-core-testing</artifactId>
+				<version>${mosir.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<repositories>
