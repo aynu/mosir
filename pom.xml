@@ -22,6 +22,20 @@
 		<system>GitHub Issues</system>
 		<url>https://github.com/aynu/mosir/issues</url>
 	</issueManagement>
+	<distributionManagement>
+		<site>
+			<id>aynu-site</id>
+			<url>site/${project.version}</url>
+		</site>
+		<repository>
+			<id>aynu-release</id>
+			<url>${aynu.release.url}</url>
+		</repository>
+		<snapshotRepository>
+			<id>aynu-snapshot</id>
+			<url>${aynu.snapshot.url}</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<licenses>
 		<license>
 			<name>GNU Affero General Public License, Version 3</name>
@@ -43,6 +57,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<site.encoding>UTF-8</site.encoding>
 		<mosir.version>${project.version}</mosir.version>
+		<github.global.server>github</github.global.server>
+		<aynu.release.url>file:///home.nilcy/git/aynu.github.com/maven/release</aynu.release.url>
+		<aynu.snapshot.url>file:///home.nilcy/git/aynu.github.com/maven/snapshot</aynu.snapshot.url>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -289,6 +306,25 @@
 				<plugin>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>2.13</version>
+					<dependencies>
+						<dependency>
+							<groupId>com.github.aynu</groupId>
+							<artifactId>mosir-base-coding</artifactId>
+							<version>0.1.0-SNAPSHOT</version>
+						</dependency>
+					</dependencies>
+					<configuration>
+						<configLocation>java/Checkstyle.xml</configLocation>
+						<includeTestSourceDirectory>false</includeTestSourceDirectory>
+					</configuration>
+					<!-- <executions> -->
+					<!-- <execution> -->
+					<!-- <phase>process-sources</phase> -->
+					<!-- <goals> -->
+					<!-- <goal>check</goal> -->
+					<!-- </goals> -->
+					<!-- </execution> -->
+					<!-- </executions> -->
 				</plugin>
 				<plugin>
 					<artifactId>maven-doap-plugin</artifactId>
@@ -528,7 +564,7 @@
 						</plugin>
 						<plugin>
 							<artifactId>maven-checkstyle-plugin</artifactId>
-							<version>2.12</version>
+							<version>2.13</version>
 						</plugin>
 					</reportPlugins>
 					<skipDeploy>true</skipDeploy>
@@ -558,8 +594,8 @@
 				<configuration>
 					<dataTypeFactoryName>org.dbunit.ext.postgresql.PostgresqlDataTypeFactory</dataTypeFactoryName>
 					<driver>org.postgresql.Driver</driver>
-					<url>jdbc:postgresql://localhost/kuzumeji</url>
-					<username>kuzumeji</username>
+					<url>jdbc:postgresql://localhost/mosir</url>
+					<username>mosir</username>
 					<password>happyhacking</password>
 					<type>CLEAN_INSERT</type>
 					<format>xls</format>
