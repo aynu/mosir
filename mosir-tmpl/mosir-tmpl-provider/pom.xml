@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.github.aynu</groupId>
+		<artifactId>mosir-tmpl</artifactId>
+		<version>0.1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>mosir-tmpl-provider</artifactId>
+	<packaging>war</packaging>
+	<name>Mosir Tmpl Provider</name>
+	<dependencies>
+		<dependency>
+			<groupId>com.github.aynu</groupId>
+			<artifactId>mosir-core-testing</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.github.aynu</groupId>
+			<artifactId>mosir-core-enterprise</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.aynu</groupId>
+			<artifactId>mosir-tmpl-registry</artifactId>
+		</dependency>
+	</dependencies>
+</project>

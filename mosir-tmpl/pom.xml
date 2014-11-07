@@ -10,4 +10,9 @@
 	<artifactId>mosir-tmpl</artifactId>
 	<packaging>pom</packaging>
 	<name>Mosir Tmpl</name>
+	<modules>
+		<module>mosir-tmpl-registry</module>
+		<module>mosir-tmpl-provider</module>
+		<module>mosir-tmpl-consumer</module>
+	</modules>
 </project>

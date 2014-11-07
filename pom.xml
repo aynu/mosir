@@ -168,6 +168,21 @@
 				<artifactId>mosir-core-enterprise</artifactId>
 				<version>${mosir.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>com.github.aynu</groupId>
+				<artifactId>mosir-tmpl-registry</artifactId>
+				<version>${mosir.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.aynu</groupId>
+				<artifactId>mosir-tmpl-provider</artifactId>
+				<version>${mosir.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.github.aynu</groupId>
+				<artifactId>mosir-tmpl-consumer</artifactId>
+				<version>${mosir.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<repositories>
