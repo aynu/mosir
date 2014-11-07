@@ -9,5 +9,5 @@
 	</parent>
 	<artifactId>mosir-tmpl</artifactId>
 	<packaging>pom</packaging>
-	<name>Mosir Template</name>
+	<name>Mosir Tmpl</name>
 </project>

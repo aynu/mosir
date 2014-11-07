@@ -9,5 +9,5 @@
 	</parent>
 	<artifactId>mosir-pack</artifactId>
 	<packaging>pom</packaging>
-	<name>Mosir Package</name>
+	<name>Mosir Pack</name>
 </project>
