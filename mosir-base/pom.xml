@@ -9,7 +9,6 @@
 	<artifactId>mosir-base</artifactId>
 	<packaging>pom</packaging>
 	<name>Mosir Base</name>
-	<description>Mosir Base Module</description>
   <modules>
     <module>mosir-base-coding</module>
   </modules>

@@ -10,5 +10,4 @@
 	<artifactId>mosir-pack</artifactId>
 	<packaging>pom</packaging>
 	<name>Mosir Package</name>
-	<description>Mosir Package Module</description>
 </project>

@@ -9,7 +9,6 @@
   </parent>
   <artifactId>mosir-site</artifactId>
   <name>Mosir Site</name>
-  <description>Mosir Site Module</description>
   <build>
     <plugins>
       <plugin>

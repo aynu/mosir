@@ -10,5 +10,4 @@
 	<artifactId>mosir-tmpl</artifactId>
 	<packaging>pom</packaging>
 	<name>Mosir Template</name>
-	<description>Mosir Template Module</description>
 </project>

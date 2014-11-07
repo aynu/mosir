@@ -22,6 +22,16 @@
 		<system>GitHub Issues</system>
 		<url>https://github.com/aynu/mosir/issues</url>
 	</issueManagement>
+	<reporting>
+		<outputDirectory>target/site</outputDirectory>
+	</reporting>
+	<modules>
+		<module>mosir-site</module>
+		<module>mosir-base</module>
+		<module>mosir-core</module>
+		<module>mosir-tmpl</module>
+		<module>mosir-pack</module>
+	</modules>
 	<properties>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -540,15 +550,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<reporting>
-		<outputDirectory>target/site</outputDirectory>
-	</reporting>
-	<modules>
-		<module>mosir-site</module>
-		<module>mosir-base</module>
-		<module>mosir-root</module>
-		<module>mosir-core</module>
-		<module>mosir-tmpl</module>
-		<module>mosir-pack</module>
-	</modules>
 </project>
