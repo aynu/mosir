@@ -3,12 +3,18 @@
 // GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
+package com.github.aynu.mosir.tmpl.consumer;
 /**
- * 業務基盤モジュール
- * <dl>
- * <dt>使用条件
- * <dd>業務の共通基盤として使用すること。
- * </dl>
+ * Hello world!
  * @author nilcy
  */
-package com.github.aynu.mosir.core.enterprise;
+@SuppressWarnings("static-method")
+public class HelloWorld {
+    /**
+     * Say
+     * @return "Hello world!"
+     */
+    public String say() {
+        return "Hello world!";
+    }
+}

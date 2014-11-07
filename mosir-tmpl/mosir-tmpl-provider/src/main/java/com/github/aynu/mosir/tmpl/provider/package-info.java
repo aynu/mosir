@@ -11,4 +11,4 @@
  * </dl>
  * @author nilcy
  */
-package com.github.aynu.mosir.core.enterprise;
+package com.github.aynu.mosir.tmpl.provider;
