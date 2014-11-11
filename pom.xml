@@ -207,6 +207,14 @@
 			<id>JBoss Repository</id>
 			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
+		<repository>
+			<id>aynu-release</id>
+			<url>http://aynu.github.io/maven/release/</url>
+		</repository>
+		<repository>
+			<id>aynu-snapshot</id>
+			<url>http://aynu.github.io/maven/snaphost/</url>
+		</repository>
 	</repositories>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -306,17 +314,17 @@
 				<plugin>
 					<artifactId>maven-checkstyle-plugin</artifactId>
 					<version>2.13</version>
-					<dependencies>
-						<dependency>
-							<groupId>com.github.aynu</groupId>
-							<artifactId>mosir-base-coding</artifactId>
-							<version>0.1.0-SNAPSHOT</version>
-						</dependency>
-					</dependencies>
-					<configuration>
-						<configLocation>java/Checkstyle.xml</configLocation>
-						<includeTestSourceDirectory>false</includeTestSourceDirectory>
-					</configuration>
+					<!-- <dependencies> -->
+					<!-- <dependency> -->
+					<!-- <groupId>com.github.aynu</groupId> -->
+					<!-- <artifactId>mosir-base-coding</artifactId> -->
+					<!-- <version>0.1.0-SNAPSHOT</version> -->
+					<!-- </dependency> -->
+					<!-- </dependencies> -->
+					<!-- <configuration> -->
+					<!-- <configLocation>java/Checkstyle.xml</configLocation> -->
+					<!-- <includeTestSourceDirectory>false</includeTestSourceDirectory> -->
+					<!-- </configuration> -->
 					<!-- <executions> -->
 					<!-- <execution> -->
 					<!-- <phase>process-sources</phase> -->
@@ -394,6 +402,11 @@
 					<artifactId>wildfly-maven-plugin</artifactId>
 					<version>1.0.2.Final</version>
 				</plugin>
+				<plugin>
+					<groupId>com.github.github</groupId>
+					<artifactId>site-maven-plugin</artifactId>
+					<version>0.10</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
 		<plugins>
@@ -445,21 +458,21 @@
 					<forkMode>once</forkMode>
 					<!-- <forkCount>1</forkCount> -->
 					<!-- <reuseForks>false</reuseForks> -->
-					<argLine>-Xms512m -Xmx512m -XX:-UseSplitVerifier</argLine>
+					<argLine>-Xms512m -Xmx512m</argLine>
 					<testFailureIgnore>false</testFailureIgnore>
 					<systemProperties>
 						<property>
 							<name>net.sourceforge.cobertura.datafile</name>
 							<value>target/cobertura/cobertura.ser</value>
 						</property>
-						<property>
-							<name>java.util.logging.config.file</name>
-							<value>${basedir}/src/test/resources/logging.properties</value>
-						</property>
-						<property>
-							<name>logback.configurationFile</name>
-							<value>file:///${basedir}/src/test/resources/logback-test.xml</value>
-						</property>
+						<!-- <property> -->
+						<!-- <name>java.util.logging.config.file</name> -->
+						<!-- <value>${basedir}/src/test/resources/logging.properties</value> -->
+						<!-- </property> -->
+						<!-- <property> -->
+						<!-- <name>logback.configurationFile</name> -->
+						<!-- <value>file:///${basedir}/src/test/resources/logback-test.xml</value> -->
+						<!-- </property> -->
 					</systemProperties>
 				</configuration>
 			</plugin>
@@ -600,6 +613,27 @@
 					<type>CLEAN_INSERT</type>
 					<format>xls</format>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.github</groupId>
+				<artifactId>site-maven-plugin</artifactId>
+				<configuration>
+					<message>Creating site for ${project.artifactId}, ${project.version}</message>
+					<path>${project.distributionManagement.site.url}</path>
+					<merge>true</merge>
+					<noJekyll>true</noJekyll>
+					<repositoryName>${project.artifactId}</repositoryName>
+					<repositoryOwner>nilcy</repositoryOwner>
+				</configuration>
+				<executions>
+					<execution>
+						<id>github-site</id>
+						<goals>
+							<goal>site</goal>
+						</goals>
+						<phase>site-deploy</phase>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
