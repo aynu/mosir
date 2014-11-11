@@ -7,12 +7,51 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Mosir</name>
-	<description>Mosir Module</description>
-	<url>https://github.com/aynu/mosir</url>
+	<description>${project.name} Module</description>
+	<url>https://aynu.github.io/site/mosir/${project.version}</url>
 	<organization>
 		<name>Aynu</name>
 		<url>https://github.com/aynu</url>
 	</organization>
+	<licenses>
+		<license>
+			<name>GNU Affero General Public License, Version 3</name>
+			<url>http://www.gnu.org/licenses/agpl-3.0.txt</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<id>nilcy</id>
+			<name>Takehiro Shimokawa</name>
+			<email>nilcy@mac.com</email>
+			<url>https://github.com/nilcy</url>
+			<organization>${project.organization.name}</organization>
+			<organizationUrl>${project.organization.url}</organizationUrl>
+			<roles>
+				<role>Leader</role>
+				<role>Analyst</role>
+				<role>Architect</role>
+				<role>Designer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>Asia/Tokyo</timezone>
+		</developer>
+	</developers>
+	<contributors>
+		<contributor>
+			<name>Takehiro Shimokawa</name>
+			<email>nilcy@mac.com</email>
+			<url>https://github.com/nilcy</url>
+			<organization>${project.organization.name}</organization>
+			<organizationUrl>${project.organization.url}</organizationUrl>
+			<roles>
+				<role>Coordinator</role>
+				<role>Convenience Agency</role>
+			</roles>
+			<timezone>Asia/Tokyo</timezone>
+		</contributor>
+	</contributors>
 	<scm>
 		<connection>scm:git:git://github.com/aynu/mosir.git</connection>
 		<developerConnection>scm:git:git@github.com:aynu/mosir.git</developerConnection>
@@ -25,24 +64,18 @@
 	<distributionManagement>
 		<site>
 			<id>aynu-site</id>
-			<url>site/${project.version}</url>
+			<url>${site.url}</url>
+			<!-- <url>site/${project.version}</url> -->
 		</site>
 		<repository>
 			<id>aynu-release</id>
-			<url>${aynu.release.url}</url>
+			<url>${release.url}</url>
 		</repository>
 		<snapshotRepository>
 			<id>aynu-snapshot</id>
-			<url>${aynu.snapshot.url}</url>
+			<url>${snapshot.url}</url>
 		</snapshotRepository>
 	</distributionManagement>
-	<licenses>
-		<license>
-			<name>GNU Affero General Public License, Version 3</name>
-			<url>http://www.gnu.org/licenses/agpl-3.0.txt</url>
-			<distribution>repo</distribution>
-		</license>
-	</licenses>
 	<modules>
 		<module>mosir-site</module>
 		<module>mosir-base</module>
@@ -57,9 +90,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<site.encoding>UTF-8</site.encoding>
 		<mosir.version>${project.version}</mosir.version>
-		<github.global.server>github</github.global.server>
-		<aynu.release.url>file:///home.nilcy/git/aynu.github.com/maven/release</aynu.release.url>
-		<aynu.snapshot.url>file:///home.nilcy/git/aynu.github.com/maven/snapshot</aynu.snapshot.url>
+		<site.url>file:///home.aynu/aynu.github.com/site/mosir/${project.version}/</site.url>
+		<release.url>file:///home.aynu/aynu.github.com/release/</release.url>
+		<snapshot.url>file:///home.aynu/aynu.github.com/snapshot/</snapshot.url>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -529,9 +562,9 @@
 										<report>license</report>
 										<report>project-team</report>
 										<report>mailing-list</report>
-										<report>dependencies</report>
+										<!-- <report>dependencies</report> -->
 										<report>dependency-convergence</report>
-										<report>dependency-management</report>
+										<!-- <report>dependency-management</report> -->
 										<report>issue-tracking</report>
 										<report>scm</report>
 										<report>cim</report>
@@ -580,7 +613,7 @@
 							<version>2.13</version>
 						</plugin>
 					</reportPlugins>
-					<skipDeploy>true</skipDeploy>
+					<!-- <skipDeploy>true</skipDeploy> -->
 				</configuration>
 			</plugin>
 			<plugin>
@@ -614,27 +647,27 @@
 					<format>xls</format>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>com.github.github</groupId>
-				<artifactId>site-maven-plugin</artifactId>
-				<configuration>
-					<message>Creating site for ${project.artifactId}, ${project.version}</message>
-					<path>${project.distributionManagement.site.url}</path>
-					<merge>true</merge>
-					<noJekyll>true</noJekyll>
-					<repositoryName>${project.artifactId}</repositoryName>
-					<repositoryOwner>nilcy</repositoryOwner>
-				</configuration>
-				<executions>
-					<execution>
-						<id>github-site</id>
-						<goals>
-							<goal>site</goal>
-						</goals>
-						<phase>site-deploy</phase>
-					</execution>
-				</executions>
-			</plugin>
+			<!-- <plugin> -->
+			<!-- <groupId>com.github.github</groupId> -->
+			<!-- <artifactId>site-maven-plugin</artifactId> -->
+			<!-- <configuration> -->
+			<!-- <message>Creating site for ${project.artifactId}, ${project.version}</message> -->
+			<!-- <path>${project.distributionManagement.site.url}</path> -->
+			<!-- <merge>true</merge> -->
+			<!-- <noJekyll>true</noJekyll> -->
+			<!-- <repositoryName>${project.artifactId}</repositoryName> -->
+			<!-- <repositoryOwner>nilcy</repositoryOwner> -->
+			<!-- </configuration> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>github</id> -->
+			<!-- <goals> -->
+			<!-- <goal>site</goal> -->
+			<!-- </goals> -->
+			<!-- <phase>site-deploy</phase> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 		</plugins>
 	</build>
 </project>
