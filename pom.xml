@@ -65,15 +65,18 @@
 		<site>
 			<id>aynu-site</id>
 			<url>${site.url}</url>
-			<!-- <url>site/${project.version}</url> -->
 		</site>
 		<repository>
 			<id>aynu-release</id>
 			<url>${release.url}</url>
+			<uniqueVersion>false</uniqueVersion>
+			<layout>default</layout>
 		</repository>
 		<snapshotRepository>
 			<id>aynu-snapshot</id>
 			<url>${snapshot.url}</url>
+			<uniqueVersion>false</uniqueVersion>
+			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>
 	<modules>
@@ -237,26 +240,31 @@
 	</dependencyManagement>
 	<repositories>
 		<repository>
+			<id>JBoss Repository</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
+			<id>aynu-release</id>
+			<url>http://aynu.github.io/release/</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<repository>
 			<id>aynu-snapshot</id>
 			<url>http://aynu.github.io/snaphost/</url>
+			<layout>default</layout>
 			<releases>
-				<enabled>true</enabled>
-				<updatePolicy>never</updatePolicy>
-				<checksumPolicy>fail</checksumPolicy>
-			</releases>
-			<snapshots>
 				<enabled>false</enabled>
 				<updatePolicy>always</updatePolicy>
 				<checksumPolicy>warn</checksumPolicy>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>never</updatePolicy>
+				<checksumPolicy>fail</checksumPolicy>
 			</snapshots>
-		</repository>
-		<!-- <repository> -->
-		<!-- <id>aynu-release</id> -->
-		<!-- <url>http://aynu.github.io/release/</url> -->
-		<!-- </repository> -->
-		<repository>
-			<id>JBoss Repository</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<build>
