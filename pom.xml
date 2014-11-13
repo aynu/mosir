@@ -237,14 +237,6 @@
 	</dependencyManagement>
 	<repositories>
 		<repository>
-			<id>JBoss Repository</id>
-			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
-		</repository>
-		<repository>
-			<id>aynu-release</id>
-			<url>http://aynu.github.io/release/</url>
-		</repository>
-		<repository>
 			<id>aynu-snapshot</id>
 			<url>http://aynu.github.io/snaphost/</url>
 			<releases>
@@ -257,6 +249,14 @@
 				<updatePolicy>never</updatePolicy>
 				<checksumPolicy>fail</checksumPolicy>
 			</snapshots>
+		</repository>
+		<!-- <repository> -->
+		<!-- <id>aynu-release</id> -->
+		<!-- <url>http://aynu.github.io/release/</url> -->
+		<!-- </repository> -->
+		<repository>
+			<id>JBoss Repository</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
 		</repository>
 	</repositories>
 	<build>
