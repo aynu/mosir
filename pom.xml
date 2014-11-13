@@ -253,7 +253,7 @@
 		</repository>
 		<repository>
 			<id>aynu-snapshot</id>
-			<url>http://aynu.github.io/snaphost/</url>
+			<url>http://aynu.github.io/snapshot/</url>
 			<layout>default</layout>
 			<releases>
 				<enabled>false</enabled>
