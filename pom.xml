@@ -100,17 +100,6 @@
 	</properties>
 	<dependencyManagement>
 		<dependencies>
-			<!-- Ehcache-JCache ->> https://github.com/ehcache/ehcache-jcache -->
-			<dependency>
-				<groupId>net.sf.ehcache</groupId>
-				<artifactId>ehcache-jcache</artifactId>
-				<version>1.5.0-0.5</version>
-			</dependency>
-			<dependency>
-				<groupId>com.googlecode.jmockit</groupId>
-				<artifactId>jmockit</artifactId>
-				<version>1.7</version>
-			</dependency>
 			<!-- Mosir Project ->> https://github.com/aynu/mosir -->
 			<dependency>
 				<groupId>com.github.aynu</groupId>

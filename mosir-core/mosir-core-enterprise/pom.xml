@@ -9,6 +9,23 @@
 	</parent>
 	<artifactId>mosir-core-enterprise</artifactId>
 	<name>Mosir Core Enterprise</name>
+	<dependencyManagement>
+		<dependencies>
+			<!-- Ehcache-JCache ->> https://github.com/ehcache/ehcache-jcache -->
+			<dependency>
+				<groupId>net.sf.ehcache</groupId>
+				<artifactId>ehcache-jcache</artifactId>
+				<version>1.5.0-0.5</version>
+			</dependency>
+			<dependency>
+				<groupId>org.wildfly.bom</groupId>
+				<artifactId>jboss-javaee-7.0-with-all</artifactId>
+				<version>8.1.0.Final</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.github.aynu</groupId>
@@ -19,11 +36,55 @@
 			<groupId>com.github.aynu</groupId>
 			<artifactId>mosir-core-standard</artifactId>
 		</dependency>
-		<!-- https://github.com/wildfly/boms/blob/jboss-bom-parent-8.1.0.Final/jboss-javaee-7.0-with-all/pom.xml -->
-		<!-- https://github.com/ehcache/ehcache-jcache -->
 		<dependency>
 			<groupId>net.sf.ehcache</groupId>
 			<artifactId>ehcache-jcache</artifactId>
+		</dependency>
+		<!-- https://github.com/wildfly/wildfly/blob/master/spec-api/pom.xml -->
+		<dependency>
+			<groupId>org.jboss.spec.javax.ejb</groupId>
+			<artifactId>jboss-ejb-api_3.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.el</groupId>
+			<artifactId>jboss-el-api_3.0_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.interceptor</groupId>
+			<artifactId>jboss-interceptors-api_1.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.servlet</groupId>
+			<artifactId>jboss-servlet-api_3.1_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.faces</groupId>
+			<artifactId>jboss-jsf-api_2.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate.javax.persistence</groupId>
+			<artifactId>hibernate-jpa-2.1-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.spec.javax.annotation</groupId>
+			<artifactId>jboss-annotations-api_1.2_spec</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish</groupId>
+			<artifactId>javax.el</artifactId>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 </project>
