@@ -5,6 +5,7 @@
 ## How to install
 
     Maven: mvn clean install
+    mvn --batch-mode archetype:generate -DarchetypeGroupId=org.javaee-samples -DarchetypeArtifactId=javaee7-arquillian-archetype -DgroupId=com.github.aynu -DartifactId=hack
 
 ## Getting started
 

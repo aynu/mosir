@@ -15,4 +15,7 @@
 		<module>mosir-core-standard</module>
 		<module>mosir-core-enterprise</module>
 	</modules>
+	<properties>
+      <wildfly.version>8.1.0.Final</wildfly.version>
+	</properties>
 </project>
