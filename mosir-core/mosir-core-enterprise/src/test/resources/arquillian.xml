@@ -7,7 +7,7 @@
 	<defaultProtocol type="Servlet 3.0" />
 	<container qualifier="wildfly-managed" default="true">
 		<!-- <configuration> -->
-		<!-- <property name="jbossHome">/home/wildfly-8.1.0.Final</property> -->
+		<!-- <property name="jbossHome">/home.aynu/wildfly-8.1.0.Final</property> -->
 		<!-- </configuration> -->
 	</container>
 	<container qualifier="wildfly-remote" default="false">
@@ -18,8 +18,8 @@
 			<property name="password">happyhacking</property>
 		</configuration>
 	</container>
-	<!-- <extension qualifier="persistence"> -->
-	<!-- <property name="defaultDataSource">java:jboss/datasources/ExampleDS</property> -->
-	<!-- <property name="defaultDataSetFormat">XLS</property> -->
-	<!-- </extension> -->
+	<extension qualifier="persistence">
+		<property name="defaultDataSource">java:jboss/datasources/ExampleDS</property>
+		<!-- <property name="defaultDataSetFormat">XLS</property> -->
+	</extension>
 </arquillian>

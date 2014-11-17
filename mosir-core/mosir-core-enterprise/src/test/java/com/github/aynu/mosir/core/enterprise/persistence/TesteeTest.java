@@ -7,8 +7,8 @@ package com.github.aynu.mosir.core.enterprise.persistence;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import java.util.Collection;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
@@ -29,7 +29,7 @@ import org.junit.runner.RunWith;
 @SuppressWarnings("boxing")
 public class TesteeTest {
     /** エンティティマネージャ */
-    @PersistenceContext
+    @Inject
     private EntityManager manager;
     /**
      * デプロイ

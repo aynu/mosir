@@ -13,7 +13,16 @@ import javax.persistence.PersistenceContext;
  */
 public class EntityManagerProducer {
     /** エンティティマネージャ */
-    @PersistenceContext
+    @PersistenceContext(unitName = "primary")
     @Produces
     private EntityManager manager;
+    /**
+     * {@link #manager} の取得
+     * @return {@link #manager}
+     */
+    public EntityManager getManager() {
+        System.out.println("-------- nilcy --------");
+        System.out.println("manager is " + manager);
+        return manager;
+    }
 }
