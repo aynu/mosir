@@ -7,11 +7,11 @@
 		<artifactId>mosir</artifactId>
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>mosir-pack</artifactId>
+	<artifactId>mosir-dist</artifactId>
 	<packaging>pom</packaging>
-	<name>Mosir Pack</name>
+	<name>Mosir Dist</name>
 	<modules>
-		<module>mosir-pack-server</module>
-		<module>mosir-pack-client</module>
+		<module>mosir-dist-server</module>
+		<module>mosir-dist-client</module>
 	</modules>
 </project>

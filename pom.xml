@@ -84,7 +84,7 @@
 		<module>mosir-base</module>
 		<module>mosir-core</module>
 		<module>mosir-tmpl</module>
-		<module>mosir-pack</module>
+		<module>mosir-dist</module>
 	</modules>
 	<properties>
 		<!-- CircleCI Not Support JavaSE-1.8 -->
@@ -94,9 +94,9 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<site.encoding>UTF-8</site.encoding>
 		<mosir.version>${project.version}</mosir.version>
-		<site.url>file:///home.aynu/aynu.github.com/site/mosir/${project.version}/</site.url>
-		<release.url>file:///home.aynu/aynu.github.com/release/</release.url>
-		<snapshot.url>file:///home.aynu/aynu.github.com/snapshot/</snapshot.url>
+		<site.url>file:///home.aynu/git/aynu.github.com/site/mosir/${project.version}/</site.url>
+		<release.url>file:///home.aynu/git/aynu.github.com/release/</release.url>
+		<snapshot.url>file:///home.aynu/git/aynu.github.com/snapshot/</snapshot.url>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -427,30 +427,20 @@
 					<compilerArgument>-Xlint</compilerArgument>
 				</configuration>
 			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<forkMode>once</forkMode>
-					<!-- <forkCount>1</forkCount> -->
-					<!-- <reuseForks>false</reuseForks> -->
-					<argLine>-Xms512m -Xmx512m</argLine>
-					<testFailureIgnore>false</testFailureIgnore>
-					<systemProperties>
-						<property>
-							<name>net.sourceforge.cobertura.datafile</name>
-							<value>target/cobertura/cobertura.ser</value>
-						</property>
-						<!-- <property> -->
-						<!-- <name>java.util.logging.config.file</name> -->
-						<!-- <value>${basedir}/src/test/resources/logging.properties</value> -->
-						<!-- </property> -->
-						<!-- <property> -->
-						<!-- <name>logback.configurationFile</name> -->
-						<!-- <value>file:///${basedir}/src/test/resources/logback-test.xml</value> -->
-						<!-- </property> -->
-					</systemProperties>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-surefire-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<forkMode>once</forkMode> -->
+<!-- 					<argLine>-Xms512m -Xmx512m</argLine> -->
+<!-- 					<testFailureIgnore>false</testFailureIgnore> -->
+<!-- 					<systemProperties> -->
+<!-- 						<property> -->
+<!-- 							<name>net.sourceforge.cobertura.datafile</name> -->
+<!-- 							<value>target/cobertura/cobertura.ser</value> -->
+<!-- 						</property> -->
+<!-- 					</systemProperties> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<artifactId>maven-ejb-plugin</artifactId>
 				<configuration>

@@ -4,10 +4,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>com.github.aynu</groupId>
-		<artifactId>mosir-pack</artifactId>
+		<artifactId>mosir-dist</artifactId>
 		<version>0.1.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>mosir-pack-server</artifactId>
+	<artifactId>mosir-dist-server</artifactId>
 	<packaging>ear</packaging>
-	<name>Mosir Pack Server</name>
+	<name>Mosir Dist Server</name>
 </project>
