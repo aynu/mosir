@@ -69,13 +69,11 @@
 		<repository>
 			<id>aynu-release</id>
 			<url>${release.url}</url>
-			<uniqueVersion>false</uniqueVersion>
 			<layout>default</layout>
 		</repository>
 		<snapshotRepository>
 			<id>aynu-snapshot</id>
 			<url>${snapshot.url}</url>
-			<uniqueVersion>false</uniqueVersion>
 			<layout>default</layout>
 		</snapshotRepository>
 	</distributionManagement>

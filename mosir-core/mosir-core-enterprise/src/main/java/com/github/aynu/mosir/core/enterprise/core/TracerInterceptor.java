@@ -17,7 +17,7 @@ import com.github.aynu.mosir.core.standard.util.MessageHelper;
  * <dt>使用条件
  * <dd>
  * <ol>
- * <li>CDI定義(beans.xml)の interceptors->class へ指定すること。</li>
+ * <li>CDI定義(beans.xml)の interceptors-class へ指定すること。</li>
  * <li>メソッドI/Oログを出力するとき、該当クラス/メソッドへ{@link Tracer 追跡子}を指定すること。</li>
  * </ol>
  * </dl>
