@@ -52,7 +52,9 @@ public class TesteeTest {
             .addAsResource("META-INF/persistence.xml")
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
-                .resolve().withTransitivity().asFile());
+                    .resolve().withTransitivity().asFile());
+        archive.addAsLibraries(Maven.resolver().loadPomFromFile("../mosir-core-standard/pom.xml")
+            .importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile());
         LOG.info(ArchiveHelper.trace(archive));
         return archive;
     }
