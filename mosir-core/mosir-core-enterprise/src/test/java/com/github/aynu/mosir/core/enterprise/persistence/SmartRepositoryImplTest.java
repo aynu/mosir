@@ -38,7 +38,7 @@ public class SmartRepositoryImplTest {
             .create(WebArchive.class)
             .addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+            .addAsResource("META-INF/persistence.xml")
             .addAsResource("config.properties")
             .addAsResource("error-messages.properties")
             .addAsLibraries(

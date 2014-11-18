@@ -20,6 +20,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import com.github.aynu.mosir.core.testing.ArchiveHelper;
 /**
  * @see Testee
  * @author nilcy
@@ -37,14 +38,16 @@ public class TesteeTest {
      */
     @Deployment
     public static Archive<?> deploy() {
-        return ShrinkWrap
-            .create(WebArchive.class)
+        final WebArchive archive = ShrinkWrap.create(WebArchive.class)
             .addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+            // .addAsResource("META-INF/persistence.xml")
+            .addAsResource("META-INF/persistence.xml")
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
                 .withTransitivity().asFile());
+        System.out.println(ArchiveHelper.trace(archive));
+        return archive;
     }
     /**
      * @see EntityManager#persist(Object)

@@ -37,7 +37,7 @@ public class DatasourceTest {
     public static Archive<?> deploy() {
         return ShrinkWrap.create(WebArchive.class).addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+            .addAsResource("META-INF/persistence.xml")
             .addAsResource("config.properties");
         // .addAsLibraries(
         // Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
