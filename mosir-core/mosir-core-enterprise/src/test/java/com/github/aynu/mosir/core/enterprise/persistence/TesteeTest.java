@@ -47,7 +47,7 @@ public class TesteeTest {
             .addAsResource("META-INF/persistence.xml")
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
-                    .withTransitivity().asFile());
+                .withTransitivity().asFile());
     }
     /**
      * @see EntityManager#persist(Object)
@@ -74,6 +74,7 @@ public class TesteeTest {
         final CriteriaQuery<Testee> query = builder.createQuery(Testee.class);
         final Root<Testee> root = query.from(Testee.class);
         query.select(root);
+        query.where(builder.equal(root.get("code"), "code#01"));
         for (final Testee testee : manager.createQuery(query).getResultList()) {
             System.out.println(testee);
         }
