@@ -46,8 +46,8 @@ public class TesteeTest {
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
             .addAsResource("META-INF/persistence.xml")
             .addAsLibraries(
-                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve()
-                .withTransitivity().asFile());
+                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
+                .resolve().withTransitivity().asFile());
     }
     /**
      * @see EntityManager#persist(Object)
