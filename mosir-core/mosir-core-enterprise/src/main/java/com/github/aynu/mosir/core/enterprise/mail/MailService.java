@@ -10,7 +10,7 @@ import javax.mail.Message.RecipientType;
 import javax.mail.Multipart;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseException;
 import com.github.aynu.mosir.core.standard.lang.Service;
 /**
  * メールサービスI/F

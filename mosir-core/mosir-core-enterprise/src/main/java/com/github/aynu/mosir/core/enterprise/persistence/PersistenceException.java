@@ -5,7 +5,7 @@
 // ----------------------------------------------------------------------------
 package com.github.aynu.mosir.core.enterprise.persistence;
 import java.util.Map;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseException;
 /**
  * 永続化キャッチ例外
  * @author nilcy

@@ -31,7 +31,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseException;
 /**
  * @see MailService
  * @see MailServiceImpl

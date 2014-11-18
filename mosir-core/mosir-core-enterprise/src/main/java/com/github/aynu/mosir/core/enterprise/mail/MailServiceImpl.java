@@ -17,7 +17,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import org.apache.commons.lang3.Validate;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseException;
 import com.github.aynu.mosir.core.standard.util.ConfigHelper;
 /**
  * メールサービス

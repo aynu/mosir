@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseRuntimeException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseRuntimeException;
 /**
  * 先進リポジトリ
  * @param <R> 基点エンティティ型
@@ -20,7 +20,7 @@ import com.github.aynu.mosir.core.enterprise.core.EnterpriseRuntimeException;
  * @author nilcy
  */
 public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleRepositoryImpl<R>
-implements SmartRepository<R, F> {
+    implements SmartRepository<R, F> {
     /** ロガー */
     private static final Logger LOG = LoggerFactory.getLogger(SmartRepositoryImpl.class);
     /** 先進リポジトリリスナー */
@@ -33,7 +33,7 @@ implements SmartRepository<R, F> {
     public SmartRepositoryImpl(final Class<R> clazz, final EntityManager manager) {
         super(clazz, manager);
         try {
-            this.listener = new AbstractSmartRepositoryListener<R, F>() {
+            this.listener = new SmartRepositoryListener<R, F>() {
                 @Override
                 public CriteriaQuery<R> query(final CriteriaBuilder builder,
                     final CriteriaQuery<R> query, final Root<R> root, final F filter) {
@@ -76,9 +76,8 @@ implements SmartRepository<R, F> {
      * @return タイプドクエリー
      */
     private TypedQuery<R> query(final F filter) {
-        final CriteriaQuery<R> query = listener.query(getManager().getCriteriaBuilder(), query(),
-            root(), filter);
-        return getManager().createQuery(query);
+        return getManager().createQuery(
+            listener.query(getManager().getCriteriaBuilder(), query(), root(), filter));
     }
     /** {@inheritDoc} */
     @Override

@@ -4,11 +4,11 @@
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
 /**
- * フレームワーク | コア
+ * 業務言語モジュール
  * <dl>
  * <dt>使用条件
- * <dd>フレームワークのコアとして使用すること。
+ * <dd>業務言語の共通基盤として使用すること。
  * </dl>
  * @author nilcy
  */
-package com.github.aynu.mosir.core.enterprise.core;
+package com.github.aynu.mosir.core.enterprise.lang;
