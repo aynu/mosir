@@ -23,6 +23,9 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.github.aynu.mosir.core.testing.ArchiveHelper;
 /**
  * @see Testee
  * @author nilcy
@@ -34,13 +37,15 @@ public class TesteeTest {
     /** エンティティマネージャ */
     @Inject
     private EntityManager manager;
+    /** ロガー */
+    private static Logger LOG = LoggerFactory.getLogger(TesteeTest.class);
     /**
      * デプロイ
      * @return WAR
      */
     @Deployment
     public static Archive<?> deploy() {
-        return ShrinkWrap
+        final WebArchive archive = ShrinkWrap
             .create(WebArchive.class)
             .addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
@@ -48,6 +53,8 @@ public class TesteeTest {
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
                 .resolve().withTransitivity().asFile());
+        LOG.info(ArchiveHelper.trace(archive));
+        return archive;
     }
     /**
      * @see EntityManager#persist(Object)
