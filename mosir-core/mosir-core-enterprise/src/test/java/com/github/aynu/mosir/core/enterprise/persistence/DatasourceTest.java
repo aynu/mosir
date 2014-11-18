@@ -37,8 +37,7 @@ public class DatasourceTest {
     public static Archive<?> deploy() {
         return ShrinkWrap.create(WebArchive.class).addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsResource("META-INF/persistence.xml")
-            .addAsResource("config.properties");
+            .addAsResource("META-INF/persistence.xml").addAsResource("config.properties");
         // .addAsLibraries(
         // Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
         // .withTransitivity().asFile());
@@ -46,7 +45,7 @@ public class DatasourceTest {
     @Test
     public final void test() throws NamingException, SQLException {
         final InitialContext ic = new InitialContext();
-        final DataSource ds = (DataSource) ic.lookup("jdbc/__default");
+        final DataSource ds = (DataSource) ic.lookup("java:jboss/datasources/ExampleDS");
         log.debug("DataSource : {}", ds);
         try (final Connection c = ds.getConnection();
             final ResultSet rs = c.createStatement().executeQuery("select count(*) from testee");) {

@@ -28,17 +28,17 @@ import org.jboss.shrinkwrap.api.asset.EmptyAsset;
 import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import com.github.aynu.mosir.core.enterprise.core.EnterpriseException;
-import com.github.aynu.mosir.core.enterprise.mail.MailService;
-import com.github.aynu.mosir.core.enterprise.mail.MailServiceImpl;
 /**
  * @see MailService
  * @see MailServiceImpl
  * @author nilcy
  */
 @RunWith(Arquillian.class)
+@Ignore("メールサーバが未設定なので自動テストはしない。")
 @SuppressWarnings("javadoc")
 public class MailServiceImplTest {
     /** メールサービスI/F */
@@ -62,7 +62,7 @@ public class MailServiceImplTest {
             .addAsResource("config.properties")
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
-                .withTransitivity().asFile());
+                    .withTransitivity().asFile());
     }
     /** テスト前処理 */
     @Before
@@ -97,7 +97,7 @@ public class MailServiceImplTest {
      */
     @Test
     public void testMultipart() throws EnterpriseException, MessagingException,
-    UnsupportedEncodingException {
+        UnsupportedEncodingException {
         final Multipart part = new MimeMultipart();
         final MimeBodyPart body = new MimeBodyPart();
         body.setText("添付ファイルを確認お願いします。", "ISO-2022-JP");
