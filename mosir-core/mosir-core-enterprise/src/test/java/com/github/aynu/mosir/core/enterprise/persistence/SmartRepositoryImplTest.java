@@ -43,7 +43,7 @@ public class SmartRepositoryImplTest {
             .addAsResource("config.properties")
             .addAsResource("error-messages.properties")
             .addAsLibraries(
-                Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
+                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve()
                     .withTransitivity().asFile());
     }
     @Test

@@ -39,7 +39,7 @@ public class DatasourceTest {
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
             .addAsResource("META-INF/persistence.xml").addAsResource("config.properties");
         // .addAsLibraries(
-        // Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
+        // Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve()
         // .withTransitivity().asFile());
     }
     @Test

@@ -61,7 +61,7 @@ public class MailServiceImplTest {
             .addAsResource("META-INF/persistence.xml")
             .addAsResource("config.properties")
             .addAsLibraries(
-                Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
+                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve()
                     .withTransitivity().asFile());
     }
     /** テスト前処理 */
