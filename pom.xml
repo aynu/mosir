@@ -425,20 +425,20 @@
 					<compilerArgument>-Xlint</compilerArgument>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-surefire-plugin</artifactId> -->
-<!-- 				<configuration> -->
-<!-- 					<forkMode>once</forkMode> -->
-<!-- 					<argLine>-Xms512m -Xmx512m</argLine> -->
-<!-- 					<testFailureIgnore>false</testFailureIgnore> -->
-<!-- 					<systemProperties> -->
-<!-- 						<property> -->
-<!-- 							<name>net.sourceforge.cobertura.datafile</name> -->
-<!-- 							<value>target/cobertura/cobertura.ser</value> -->
-<!-- 						</property> -->
-<!-- 					</systemProperties> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-surefire-plugin</artifactId> -->
+			<!-- <configuration> -->
+			<!-- <forkMode>once</forkMode> -->
+			<!-- <argLine>-Xms512m -Xmx512m</argLine> -->
+			<!-- <testFailureIgnore>false</testFailureIgnore> -->
+			<!-- <systemProperties> -->
+			<!-- <property> -->
+			<!-- <name>net.sourceforge.cobertura.datafile</name> -->
+			<!-- <value>target/cobertura/cobertura.ser</value> -->
+			<!-- </property> -->
+			<!-- </systemProperties> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-ejb-plugin</artifactId>
 				<configuration>
