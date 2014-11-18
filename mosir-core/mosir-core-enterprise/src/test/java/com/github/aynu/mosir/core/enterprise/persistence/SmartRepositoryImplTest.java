@@ -35,7 +35,7 @@ public class SmartRepositoryImplTest {
     private Logger log;
     @Deployment
     public static Archive<?> deploy() {
-        return ShrinkWrap
+        final WebArchive archive = ShrinkWrap
             .create(WebArchive.class)
             .addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
@@ -43,8 +43,11 @@ public class SmartRepositoryImplTest {
             .addAsResource("config.properties")
             .addAsResource("error-messages.properties")
             .addAsLibraries(
-                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve()
-                    .withTransitivity().asFile());
+                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
+                .resolve().withTransitivity().asFile());
+        archive.addAsLibraries(Maven.resolver().loadPomFromFile("../mosir-core-standard/pom.xml")
+            .importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile());
+        return archive;
     }
     @Test
     public final void testSimpleRepository() throws PersistenceException {

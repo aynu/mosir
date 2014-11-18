@@ -38,9 +38,6 @@ public class DatasourceTest {
         return ShrinkWrap.create(WebArchive.class).addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
             .addAsResource("META-INF/persistence.xml").addAsResource("config.properties");
-        // .addAsLibraries(
-        // Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies().resolve()
-        // .withTransitivity().asFile());
     }
     @Test
     public final void test() throws NamingException, SQLException {
