@@ -20,7 +20,7 @@ import com.github.aynu.mosir.core.enterprise.core.EnterpriseRuntimeException;
  * @author nilcy
  */
 public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleRepositoryImpl<R>
-    implements SmartRepository<R, F> {
+implements SmartRepository<R, F> {
     /** ロガー */
     private static final Logger LOG = LoggerFactory.getLogger(SmartRepositoryImpl.class);
     /** 先進リポジトリリスナー */
@@ -76,8 +76,9 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
      * @return タイプドクエリー
      */
     private TypedQuery<R> query(final F filter) {
-        return getManager().createQuery(
-            listener.query(getManager().getCriteriaBuilder(), query(), root(), filter));
+        final CriteriaQuery<R> query = listener.query(getManager().getCriteriaBuilder(), query(),
+            root(), filter);
+        return getManager().createQuery(query);
     }
     /** {@inheritDoc} */
     @Override

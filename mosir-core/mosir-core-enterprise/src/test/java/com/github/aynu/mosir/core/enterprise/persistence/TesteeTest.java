@@ -9,6 +9,9 @@ import static org.junit.Assert.*;
 import java.util.Collection;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
@@ -26,7 +29,7 @@ import org.junit.runner.RunWith;
  */
 @RunWith(Arquillian.class)
 @Transactional(value = TransactionMode.ROLLBACK)
-@SuppressWarnings("boxing")
+@SuppressWarnings({ "boxing", "javadoc" })
 public class TesteeTest {
     /** エンティティマネージャ */
     @Inject
@@ -63,5 +66,16 @@ public class TesteeTest {
         final Testee first = entities.iterator().next();
         assertThat(first.getCode(), is("code#01"));
         assertThat(first.getName(), is("name#01"));
+    }
+    @Test
+    public final void test2() {
+        manager.persist(new Testee("code#01", "name#01"));
+        final CriteriaBuilder builder = manager.getCriteriaBuilder();
+        final CriteriaQuery<Testee> query = builder.createQuery(Testee.class);
+        final Root<Testee> root = query.from(Testee.class);
+        query.select(root);
+        for (final Testee testee : manager.createQuery(query).getResultList()) {
+            System.out.println(testee);
+        }
     }
 }
