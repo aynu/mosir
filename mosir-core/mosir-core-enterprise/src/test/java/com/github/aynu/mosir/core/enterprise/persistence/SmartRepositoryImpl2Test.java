@@ -27,9 +27,9 @@ import org.slf4j.Logger;
 @RunWith(Arquillian.class)
 @Transactional(value = TransactionMode.ROLLBACK)
 @SuppressWarnings({ "javadoc", "boxing" })
-public class SmartRepositoryImplTest {
+public class SmartRepositoryImpl2Test {
     @Inject
-    private SmartRepository<Testee, TesteeFilter> testee;
+    private SmartRepository2<Testee, TesteeFilter> testee;
     @Inject
     private Logger log;
     @Deployment
@@ -43,7 +43,7 @@ public class SmartRepositoryImplTest {
             .addAsResource("error-messages.properties")
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
-                .resolve().withTransitivity().asFile());
+                    .resolve().withTransitivity().asFile());
         archive.addAsLibraries(Maven.resolver().loadPomFromFile("../mosir-core-standard/pom.xml")
             .importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile());
         return archive;
@@ -77,6 +77,7 @@ public class SmartRepositoryImplTest {
         assertThat(entity, is(nullValue()));
     }
     @Test
+    // @Ignore("TesteeTest#test2")
     public final void testSmartRepository() throws PersistenceException {
         testee.save(new Testee("code#91", "name#91"));
         final TesteeFilter filter = new TesteeFilter("code#91", "name", "code");
@@ -87,6 +88,7 @@ public class SmartRepositoryImplTest {
         testee.delete(entity);
     }
     @Test
+    // @Ignore("TesteeTest#test2")
     public final void testOrders() throws PersistenceException {
         testee.save(new Testee("code#81", "name#81"));
         testee.save(new Testee("code#82", "name#82"));

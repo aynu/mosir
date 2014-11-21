@@ -8,6 +8,10 @@ import java.util.Collection;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import org.apache.commons.lang3.StringUtils;
 /**
  * @see SmartRepository
  * @see SmartRepositoryImpl
@@ -26,20 +30,42 @@ public class SmartRepository2Producer {
      */
     @Produces
     public SmartRepository2<Testee, TesteeFilter> createTestee() {
-        return new SmartRepository2Impl<Testee, TesteeFilter>(Testee.class, manager) {
+        return new AbstractSmartRepositoryImpl<Testee, TesteeFilter>(Testee.class, manager) {
             @Override
             public Testee findOne(final TesteeFilter filter) throws PersistenceException {
-                return null;
+                final CriteriaBuilder builder = builder();
+                final CriteriaQuery<Testee> query = query(builder);
+                final Root<Testee> root = root(query);
+                query.select(root);
+                if (StringUtils.isNotEmpty(filter.getCode())) {
+                    query.where(builder.equal(root.get("code"), filter.getCode()));
+                }
+                return getManager().createQuery(query).getSingleResult();
             }
             @Override
             public Collection<Testee> findMany(final TesteeFilter filter)
                 throws PersistenceException {
-                return null;
+                final CriteriaBuilder builder = builder();
+                final CriteriaQuery<Testee> query = query(builder);
+                final Root<Testee> root = root(query);
+                query.select(root);
+                if (StringUtils.isNotEmpty(filter.getCode())) {
+                    query.where(builder.equal(root.get("code"), filter.getCode()));
+                }
+                return getManager().createQuery(query).getResultList();
             }
             @Override
             public Collection<Testee> findMany(final TesteeFilter filter, final int first,
                 final int max) throws PersistenceException {
-                return null;
+                final CriteriaBuilder builder = builder();
+                final CriteriaQuery<Testee> query = query(builder);
+                final Root<Testee> root = root(query);
+                query.select(root);
+                if (StringUtils.isNotEmpty(filter.getCode())) {
+                    query.where(builder.equal(root.get("code"), filter.getCode()));
+                }
+                return getManager().createQuery(query).setFirstResult(first).setMaxResults(max)
+                    .getResultList();
             }
         };
     }

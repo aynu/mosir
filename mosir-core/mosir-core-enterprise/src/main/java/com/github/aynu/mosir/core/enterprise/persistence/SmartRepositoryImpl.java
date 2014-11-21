@@ -20,11 +20,17 @@ import com.github.aynu.mosir.core.enterprise.lang.EnterpriseRuntimeException;
  * @author nilcy
  */
 public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleRepositoryImpl<R>
-implements SmartRepository<R, F> {
+    implements SmartRepository<R, F> {
     /** ロガー */
     private static final Logger LOG = LoggerFactory.getLogger(SmartRepositoryImpl.class);
     /** 先進リポジトリリスナー */
-    private final SmartRepositoryListener<R, F> listener;
+    private SmartRepositoryListener<R, F> listener;
+    /** クライテリアビルダー */
+    private CriteriaBuilder builder;
+    /** クライテリアクエリー */
+    private CriteriaQuery<R> query;
+    /** クライテリアルート */
+    private Root<R> root;
     /**
      * コンストラクタ
      * @param clazz エンティティクラス
@@ -40,6 +46,7 @@ implements SmartRepository<R, F> {
                     return query.select(root);
                 }
             };
+            reset();
         } catch (final IllegalStateException e) {
             LOG.warn(e.toString(), e);
             throw new EnterpriseRuntimeException(e.toString());
@@ -53,22 +60,31 @@ implements SmartRepository<R, F> {
      */
     public SmartRepositoryImpl(final Class<R> clazz, final EntityManager manager,
         final SmartRepositoryListener<R, F> listener) {
-        super(clazz, manager);
+        this(clazz, manager);
         this.listener = listener;
+        // reset();
+    }
+    public void reset() {
+        this.builder = getManager().getCriteriaBuilder();
+        this.query = this.builder.createQuery(getEntityClass());
+        this.root = query().from(getEntityClass());
     }
     /**
      * クライテリアクエリーの作成
      * @return クライテリアクエリー
      */
     private CriteriaQuery<R> query() {
-        return getManager().getCriteriaBuilder().createQuery(getEntityClass());
+        // return getManager().getCriteriaBuilder().createQuery(getEntityClass());
+        // return this.builder.createQuery(getEntityClass());
+        return this.query;
     }
     /**
      * クエリールートの作成
      * @return クエリールート
      */
     private Root<R> root() {
-        return query().from(getEntityClass());
+        // return query().from(getEntityClass());
+        return this.root;
     }
     /**
      * タイプドクエリーの作成
@@ -76,7 +92,7 @@ implements SmartRepository<R, F> {
      * @return タイプドクエリー
      */
     private TypedQuery<R> query(final F filter) {
-        final CriteriaBuilder builder = getManager().getCriteriaBuilder();
+        // final CriteriaBuilder builder = getManager().getCriteriaBuilder();
         final CriteriaQuery<R> query = listener.query(builder, query(), root(), filter);
         return getManager().createQuery(query);
     }

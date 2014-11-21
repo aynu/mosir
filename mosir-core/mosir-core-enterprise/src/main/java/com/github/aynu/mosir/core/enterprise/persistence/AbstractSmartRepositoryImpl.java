@@ -15,14 +15,14 @@ import javax.persistence.criteria.Root;
  * @param <F> 検索条件オブジェクト型
  * @author nilcy
  */
-public abstract class SmartRepository2Impl<R extends Persistable, F> extends
-SimpleRepositoryImpl<R> implements SmartRepository2<R, F> {
+public abstract class AbstractSmartRepositoryImpl<R extends Persistable, F> extends
+    SimpleRepositoryImpl<R> implements SmartRepository2<R, F> {
     /**
      * コンストラクタ
      * @param clazz エンティティクラス
      * @param manager エンティティマネージャ
      */
-    public SmartRepository2Impl(final Class<R> clazz, final EntityManager manager) {
+    public AbstractSmartRepositoryImpl(final Class<R> clazz, final EntityManager manager) {
         super(clazz, manager);
     }
     /**
@@ -34,17 +34,19 @@ SimpleRepositoryImpl<R> implements SmartRepository2<R, F> {
     }
     /**
      * クライテリアクエリーの作成
+     * @param builder クライテリアビルダー
      * @return クライテリアクエリー
      */
-    protected CriteriaQuery<R> query() {
-        return builder().createQuery(getEntityClass());
+    protected CriteriaQuery<R> query(final CriteriaBuilder builder) {
+        return builder.createQuery(getEntityClass());
     }
     /**
      * クエリールートの作成
+     * @param query クライテリアクエリー
      * @return クエリールート
      */
-    protected Root<R> root() {
-        return query().from(getEntityClass());
+    protected Root<R> root(final CriteriaQuery<R> query) {
+        return query.from(getEntityClass());
     }
     /** {@inheritDoc} */
     @Override
