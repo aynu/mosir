@@ -44,7 +44,7 @@ public class SmartRepositoryImplTest {
             .addAsResource("error-messages.properties")
             .addAsLibraries(
                 Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
-                .resolve().withTransitivity().asFile());
+                    .resolve().withTransitivity().asFile());
         archive.addAsLibraries(Maven.resolver().loadPomFromFile("../mosir-core-standard/pom.xml")
             .importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile());
         return archive;
@@ -78,7 +78,7 @@ public class SmartRepositoryImplTest {
         assertThat(entity, is(nullValue()));
     }
     @Test
-    @Ignore("TesteeTest#test2")
+    // @Ignore("TesteeTest#test2")
     public final void testSmartRepository() throws PersistenceException {
         testee.save(new Testee("code#91", "name#91"));
         final TesteeFilter filter = new TesteeFilter("code#91", "name", "code");
