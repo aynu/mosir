@@ -39,7 +39,8 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
     public SmartRepositoryImpl(final Class<R> clazz, final EntityManager manager) {
         super(clazz, manager);
         try {
-            this.listener = new SmartRepositoryListener<R, F>() {
+            listener = new SmartRepositoryListener<R, F>() {
+                @SuppressWarnings("hiding")
                 @Override
                 public CriteriaQuery<R> query(final CriteriaBuilder builder,
                     final CriteriaQuery<R> query, final Root<R> root, final F filter) {
@@ -62,29 +63,18 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
         final SmartRepositoryListener<R, F> listener) {
         this(clazz, manager);
         this.listener = listener;
-        // reset();
     }
+    /**
+     * インスタンス初期化
+     * <dl>
+     * <dt>使用条件
+     * <dd>インスタンスフィールドの初期化に使用すること。
+     * </dl>
+     */
     public void reset() {
-        this.builder = getManager().getCriteriaBuilder();
-        this.query = this.builder.createQuery(getEntityClass());
-        this.root = query().from(getEntityClass());
-    }
-    /**
-     * クライテリアクエリーの作成
-     * @return クライテリアクエリー
-     */
-    private CriteriaQuery<R> query() {
-        // return getManager().getCriteriaBuilder().createQuery(getEntityClass());
-        // return this.builder.createQuery(getEntityClass());
-        return this.query;
-    }
-    /**
-     * クエリールートの作成
-     * @return クエリールート
-     */
-    private Root<R> root() {
-        // return query().from(getEntityClass());
-        return this.root;
+        builder = getManager().getCriteriaBuilder();
+        query = builder.createQuery(getEntityClass());
+        root = query.from(getEntityClass());
     }
     /**
      * タイプドクエリーの作成
@@ -92,9 +82,7 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
      * @return タイプドクエリー
      */
     private TypedQuery<R> query(final F filter) {
-        // final CriteriaBuilder builder = getManager().getCriteriaBuilder();
-        final CriteriaQuery<R> query = listener.query(builder, query(), root(), filter);
-        return getManager().createQuery(query);
+        return getManager().createQuery(listener.query(builder, query, root, filter));
     }
     /** {@inheritDoc} */
     @Override

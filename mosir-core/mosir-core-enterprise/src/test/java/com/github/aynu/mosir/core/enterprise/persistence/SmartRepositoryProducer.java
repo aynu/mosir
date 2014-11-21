@@ -38,8 +38,7 @@ public class SmartRepositoryProducer {
                 if (StringUtils.isNotEmpty(filter.getCode())) {
                     query.where(builder.equal(root.get("code"), filter.getCode()));
                 }
-                // return query.orderBy(createOrders(builder, root, filter));
-                return query;
+                return query.orderBy(createOrders(builder, root, filter));
             }
         };
         return new SmartRepositoryImpl<>(Testee.class, manager, listener);
