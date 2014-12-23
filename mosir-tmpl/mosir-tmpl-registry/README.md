@@ -1,1 +1,1 @@
-# Aynu Mosir Template Registry Released
+# Aynu Mosir Template Registry Patched
