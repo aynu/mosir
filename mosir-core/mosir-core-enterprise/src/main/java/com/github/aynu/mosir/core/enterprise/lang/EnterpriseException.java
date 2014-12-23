@@ -3,7 +3,7 @@
 // GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
-package com.github.aynu.mosir.core.enterprise.core;
+package com.github.aynu.mosir.core.enterprise.lang;
 import static com.github.aynu.mosir.core.standard.util.ConfigHelper.*;
 import java.util.LinkedHashMap;
 import java.util.Map;

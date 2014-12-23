@@ -9,6 +9,9 @@ import static org.junit.Assert.*;
 import java.util.Collection;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.transaction.api.annotation.TransactionMode;
@@ -20,31 +23,40 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.jboss.shrinkwrap.resolver.api.maven.Maven;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import com.github.aynu.mosir.core.testing.ArchiveHelper;
 /**
  * @see Testee
  * @author nilcy
  */
 @RunWith(Arquillian.class)
 @Transactional(value = TransactionMode.ROLLBACK)
-@SuppressWarnings("boxing")
+@SuppressWarnings({ "boxing", "javadoc" })
 public class TesteeTest {
     /** エンティティマネージャ */
     @Inject
     private EntityManager manager;
+    /** ロガー */
+    private static Logger LOG = LoggerFactory.getLogger(TesteeTest.class);
     /**
      * デプロイ
      * @return WAR
      */
     @Deployment
     public static Archive<?> deploy() {
-        return ShrinkWrap
+        final WebArchive archive = ShrinkWrap
             .create(WebArchive.class)
             .addPackages(true, "com.github.aynu.mosir")
             .addAsWebInfResource(EmptyAsset.INSTANCE, "beans.xml")
-            .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
+            .addAsResource("META-INF/persistence.xml")
             .addAsLibraries(
-                Maven.resolver().loadPomFromFile("pom.xml").importRuntimeDependencies().resolve()
-                .withTransitivity().asFile());
+                Maven.resolver().loadPomFromFile("pom.xml").importCompileAndRuntimeDependencies()
+                    .resolve().withTransitivity().asFile());
+        archive.addAsLibraries(Maven.resolver().loadPomFromFile("../mosir-core-standard/pom.xml")
+            .importCompileAndRuntimeDependencies().resolve().withTransitivity().asFile());
+        LOG.info(ArchiveHelper.trace(archive));
+        return archive;
     }
     /**
      * @see EntityManager#persist(Object)
@@ -63,5 +75,17 @@ public class TesteeTest {
         final Testee first = entities.iterator().next();
         assertThat(first.getCode(), is("code#01"));
         assertThat(first.getName(), is("name#01"));
+    }
+    @Test
+    public final void test2() {
+        manager.persist(new Testee("code#01", "name#01"));
+        final CriteriaBuilder builder = manager.getCriteriaBuilder();
+        final CriteriaQuery<Testee> query = builder.createQuery(Testee.class);
+        final Root<Testee> root = query.from(Testee.class);
+        query.select(root);
+        query.where(builder.equal(root.get("code"), "code#01"));
+        for (final Testee testee : manager.createQuery(query).getResultList()) {
+            System.out.println(testee);
+        }
     }
 }

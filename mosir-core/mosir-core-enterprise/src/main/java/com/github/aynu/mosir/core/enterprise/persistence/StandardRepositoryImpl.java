@@ -14,7 +14,7 @@ import javax.persistence.TypedQuery;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseRuntimeException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseRuntimeException;
 /**
  * 標準リポジトリ
  * @param <R> 基点エンティティ型

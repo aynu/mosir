@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="http://ehcache.org/ehcache.xsd" maxBytesLocalHeap="50M">
+  <diskStore path="java.io.tmpdir" />
+  <defaultCache eternal="false" timeToIdleSeconds="120" timeToLiveSeconds="120"
+    maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120" memoryStoreEvictionPolicy="LRU">
+    <persistence strategy="localTempSwap" />
+  </defaultCache>
+  <cache name="application" maxBytesLocalHeap="30%" eternal="false" timeToIdleSeconds="120"
+    timeToLiveSeconds="120" maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+    memoryStoreEvictionPolicy="LRU">
+    <persistence strategy="localTempSwap" />
+  </cache>
+  <cache name="session" maxBytesLocalHeap="20%" eternal="false" timeToIdleSeconds="120"
+    timeToLiveSeconds="120" maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+    memoryStoreEvictionPolicy="LRU">
+    <persistence strategy="localTempSwap" />
+  </cache>
+  <cache name="conversation" maxBytesLocalHeap="20%" eternal="false" timeToIdleSeconds="120"
+    timeToLiveSeconds="120" maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+    memoryStoreEvictionPolicy="LRU">
+    <persistence strategy="localTempSwap" />
+  </cache>
+  <cache name="request" maxBytesLocalHeap="10%" eternal="false" timeToIdleSeconds="120"
+    timeToLiveSeconds="120" maxElementsOnDisk="10000000" diskExpiryThreadIntervalSeconds="120"
+    memoryStoreEvictionPolicy="LRU">
+    <persistence strategy="localTempSwap" />
+  </cache>
+</ehcache>

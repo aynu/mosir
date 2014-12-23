@@ -3,7 +3,7 @@
 // GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 // http://www.gnu.org/licenses/gpl-3.0-standalone.html
 // ----------------------------------------------------------------------------
-package com.github.aynu.mosir.core.enterprise.core;
+package com.github.aynu.mosir.core.enterprise.lang;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 import javax.inject.Inject;
@@ -16,7 +16,7 @@ import org.jboss.shrinkwrap.api.spec.WebArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
-import com.github.aynu.mosir.core.enterprise.core.LoggerProducer;
+import com.github.aynu.mosir.core.enterprise.lang.LoggerProducer;
 /**
  * @see LoggerProducer
  * @author nilcy

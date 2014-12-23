@@ -12,7 +12,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import com.github.aynu.mosir.core.enterprise.core.EnterpriseRuntimeException;
+import com.github.aynu.mosir.core.enterprise.lang.EnterpriseRuntimeException;
 /**
  * 先進リポジトリ
  * @param <R> 基点エンティティ型
@@ -24,7 +24,13 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
     /** ロガー */
     private static final Logger LOG = LoggerFactory.getLogger(SmartRepositoryImpl.class);
     /** 先進リポジトリリスナー */
-    private final SmartRepositoryListener<R, F> listener;
+    private SmartRepositoryListener<R, F> listener;
+    /** クライテリアビルダー */
+    private CriteriaBuilder builder;
+    /** クライテリアクエリー */
+    private CriteriaQuery<R> query;
+    /** クライテリアルート */
+    private Root<R> root;
     /**
      * コンストラクタ
      * @param clazz エンティティクラス
@@ -33,13 +39,15 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
     public SmartRepositoryImpl(final Class<R> clazz, final EntityManager manager) {
         super(clazz, manager);
         try {
-            this.listener = new AbstractSmartRepositoryListener<R, F>() {
+            listener = new SmartRepositoryListener<R, F>() {
+                @SuppressWarnings("hiding")
                 @Override
                 public CriteriaQuery<R> query(final CriteriaBuilder builder,
                     final CriteriaQuery<R> query, final Root<R> root, final F filter) {
                     return query.select(root);
                 }
             };
+            reset();
         } catch (final IllegalStateException e) {
             LOG.warn(e.toString(), e);
             throw new EnterpriseRuntimeException(e.toString());
@@ -53,22 +61,20 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
      */
     public SmartRepositoryImpl(final Class<R> clazz, final EntityManager manager,
         final SmartRepositoryListener<R, F> listener) {
-        super(clazz, manager);
+        this(clazz, manager);
         this.listener = listener;
     }
     /**
-     * クライテリアクエリーの作成
-     * @return クライテリアクエリー
+     * インスタンス初期化
+     * <dl>
+     * <dt>使用条件
+     * <dd>インスタンスフィールドの初期化に使用すること。
+     * </dl>
      */
-    private CriteriaQuery<R> query() {
-        return getManager().getCriteriaBuilder().createQuery(getEntityClass());
-    }
-    /**
-     * クエリールートの作成
-     * @return クエリールート
-     */
-    private Root<R> root() {
-        return query().from(getEntityClass());
+    public void reset() {
+        builder = getManager().getCriteriaBuilder();
+        query = builder.createQuery(getEntityClass());
+        root = query.from(getEntityClass());
     }
     /**
      * タイプドクエリーの作成
@@ -76,8 +82,7 @@ public class SmartRepositoryImpl<R extends Persistable, F> extends SimpleReposit
      * @return タイプドクエリー
      */
     private TypedQuery<R> query(final F filter) {
-        return getManager().createQuery(
-            listener.query(getManager().getCriteriaBuilder(), query(), root(), filter));
+        return getManager().createQuery(listener.query(builder, query, root, filter));
     }
     /** {@inheritDoc} */
     @Override
