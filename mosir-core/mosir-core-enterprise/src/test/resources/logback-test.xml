@@ -16,7 +16,7 @@
       <maxHistory>7</maxHistory>
     </rollingPolicy>
   </appender>
-  <logger name="com.github.aynu.yukar" level="trace" />
+  <logger name="com.github.aynu.mosir" level="trace" />
   <root level="info">
     <appender-ref ref="CONSOLE" />
     <appender-ref ref="FILE" />
