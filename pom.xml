@@ -78,7 +78,6 @@
 		</snapshotRepository>
 	</distributionManagement>
 	<modules>
-		<module>mosir-site</module>
 		<module>mosir-base</module>
 		<module>mosir-core</module>
 		<module>mosir-tmpl</module>
